@@ -1,0 +1,21 @@
+button {
+  margin-top: 24px;
+}
+
+.icon-size100 {
+  font-size: 100px;
+}
+
+.fs90 {
+  font-size: 90px;
+}
+
+.aprovado {
+  color: green;
+  font-weight: bold;
+}
+
+.reprovado {
+  color: red;
+  font-weight: bold;
+}
