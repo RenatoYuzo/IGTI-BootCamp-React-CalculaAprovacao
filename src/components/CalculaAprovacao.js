@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Slider } from 'primereact/slider';
 
 export default class CalculaAprovacao extends Component {
   constructor() {
@@ -12,13 +13,13 @@ export default class CalculaAprovacao extends Component {
     };
   }
 
-  handleChange(event) {
-    const checkValue = event.target.value >= 60 ? 'aprovado' : 'reprovado';
+  handleChange(value) {
+    const checkValue = value >= 60 ? 'aprovado' : 'reprovado';
     this.setState({
-      value: event.target.value,
+      value: value,
       checkValue: checkValue,
     });
-    this.props.onValue(event.target.value);
+    this.props.onValue(value);
   }
 
   render() {
@@ -27,18 +28,18 @@ export default class CalculaAprovacao extends Component {
 
     return (
       <>
-        <div className="input-field">
-          <input
-            id={'modX' + title}
-            type="number"
-            className={'validate ' + checkValue}
-            onChange={this.handleChange}
-            min="0"
-            max="100"
-            value={value}
-          />
-          <label htmlFor={'modX' + title}>{title}</label>
-        </div>
+        <span className={checkValue}>
+          {title}
+          {': ' + value}
+        </span>
+        <Slider
+          id={'modX' + title}
+          className={checkValue + ' margin-b-25'}
+          value={value}
+          onChange={(e) => this.handleChange(e.value)}
+          min={0}
+          max={100}
+        />
       </>
     );
   }

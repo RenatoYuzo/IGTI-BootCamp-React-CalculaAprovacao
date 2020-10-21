@@ -24,3 +24,10 @@ button {
   color: black;
   font-weight: bold;
 }
+
+.margin-b-10 {
+  margin-bottom: 10px;
+}
+.margin-b-25 {
+  margin-bottom: 25px;
+}

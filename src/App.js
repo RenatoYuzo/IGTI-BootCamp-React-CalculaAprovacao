@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import CalculaAprovacao from './components/CalculaAprovacao';
 import Resultado from './components/Resultado';
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
 
 export default class App extends Component {
   constructor() {
@@ -77,43 +79,44 @@ export default class App extends Component {
       aprovadoPeloPercentualTotal,
     } = this.state;
 
+    const footer = (
+      <span>
+        <Button
+          label="Calcular Notas"
+          icon="pi pi-check"
+          className="p-button-raised p-button-text"
+          onClick={this.calculaAprovacao}
+        />
+      </span>
+    );
+
     return (
       <Fragment>
         <div className="container">
           <div className="row">
             <div className="col s12	m12	l6	xl6">
-              <div className="card grey lighten-4">
-                <div className="card-content">
-                  <CalculaAprovacao
-                    title="Módulo 01 - Fundamentos (0 - 100)"
-                    onValue={this.handleValue1}
-                  />
-                  <CalculaAprovacao
-                    title="Módulo 02 - Angular (0 - 100)"
-                    onValue={this.handleValue2}
-                  />
-                  <CalculaAprovacao
-                    title="Módulo 03 - React (0 - 100)"
-                    onValue={this.handleValue3}
-                  />
-                  <CalculaAprovacao
-                    title="Módulo 04 - Vue (0 - 100)"
-                    onValue={this.handleValue4}
-                  />
-                  <CalculaAprovacao
-                    title="Módulo 05 - Desafio Final (0 - 100)"
-                    onValue={this.handleValue5}
-                  />
-                </div>
-                <div className="card-action">
-                  <button
-                    onClick={this.calculaAprovacao}
-                    className="btn waves-effect waves-light"
-                  >
-                    Calcular
-                  </button>
-                </div>
-              </div>
+              <Card title="Notas" footer={footer}>
+                <CalculaAprovacao
+                  title="Módulo 01 - Fundamentos (0 - 100)"
+                  onValue={this.handleValue1}
+                />
+                <CalculaAprovacao
+                  title="Módulo 02 - Angular (0 - 100)"
+                  onValue={this.handleValue2}
+                />
+                <CalculaAprovacao
+                  title="Módulo 03 - React (0 - 100)"
+                  onValue={this.handleValue3}
+                />
+                <CalculaAprovacao
+                  title="Módulo 04 - Vue (0 - 100)"
+                  onValue={this.handleValue4}
+                />
+                <CalculaAprovacao
+                  title="Módulo 05 - Desafio Final (0 - 100)"
+                  onValue={this.handleValue5}
+                />
+              </Card>
             </div>
 
             <div className="col s12	m12	l6	xl6">
