@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import CalculaAprovacao from './components/CalculaAprovacao';
+import Resultado from './components/Resultado';
 
 export default class App extends Component {
   constructor() {
     super();
 
     this.state = {
+      soma: 500,
       mod1: 100,
       mod2: 100,
       mod3: 100,
@@ -58,6 +60,8 @@ export default class App extends Component {
     }
 
     this.setState({
+      soma,
+      media,
       aprovado,
       aprovadoPelaMedia,
       aprovadoPeloPercentualTotal,
@@ -65,50 +69,63 @@ export default class App extends Component {
   };
 
   render() {
-    const { aprovado, media } = this.state;
+    const {
+      soma,
+      media,
+      aprovado,
+      aprovadoPelaMedia,
+      aprovadoPeloPercentualTotal,
+    } = this.state;
 
     return (
       <Fragment>
         <div className="container">
           <div className="row">
-            <div className="col s6	m4	l2	xl2">
-              <CalculaAprovacao title="Módulo 1" onValue={this.handleValue1} />
+            <div className="col s12	m12	l6	xl6">
+              <div className="card grey lighten-4">
+                <div className="card-content">
+                  <CalculaAprovacao
+                    title="Módulo 01 - Fundamentos (0 - 100)"
+                    onValue={this.handleValue1}
+                  />
+                  <CalculaAprovacao
+                    title="Módulo 02 - Angular (0 - 100)"
+                    onValue={this.handleValue2}
+                  />
+                  <CalculaAprovacao
+                    title="Módulo 03 - React (0 - 100)"
+                    onValue={this.handleValue3}
+                  />
+                  <CalculaAprovacao
+                    title="Módulo 04 - Vue (0 - 100)"
+                    onValue={this.handleValue4}
+                  />
+                  <CalculaAprovacao
+                    title="Módulo 05 - Desafio Final (0 - 100)"
+                    onValue={this.handleValue5}
+                  />
+                </div>
+                <div className="card-action">
+                  <button
+                    onClick={this.calculaAprovacao}
+                    className="btn waves-effect waves-light"
+                  >
+                    Calcular
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="col s6	m4	l2	xl2">
-              <CalculaAprovacao title="Módulo 2" onValue={this.handleValue2} />
-            </div>
-            <div className="col s6	m4	l2	xl2">
-              <CalculaAprovacao title="Módulo 3" onValue={this.handleValue3} />
-            </div>
-            <div className="col s6	m4	l2	xl2">
-              <CalculaAprovacao title="Módulo 4" onValue={this.handleValue4} />
-            </div>
-            <div className="col s6	m4	l2	xl2">
-              <CalculaAprovacao title="Módulo 5" onValue={this.handleValue5} />
-            </div>
-            <div className="col s6	m4	l2	xl2">
-              <button
-                onClick={this.calculaAprovacao}
-                className="btn waves-effect waves-light"
-              >
-                Calcular
-              </button>
+
+            <div className="col s12	m12	l6	xl6">
+              <Resultado
+                soma={soma}
+                media={media}
+                aprovado={aprovado}
+                aprovadoPelaMedia={aprovadoPelaMedia}
+                aprovadoPeloPercentualTotal={aprovadoPeloPercentualTotal}
+              />
             </div>
           </div>
-
-          {aprovado && (
-            <div>
-              <i className="material-icons icon-size100 aprovado">check</i>
-              <span className="fs90">Aprovado</span>
-            </div>
-          )}
-          {!aprovado && (
-            <div>
-              <i className="material-icons icon-size100 reprovado">clear</i>
-              <span className="fs90">Reprovado</span>
-            </div>
-          )}
-          <h2>Media: {media}</h2>
         </div>
       </Fragment>
     );

@@ -2,12 +2,12 @@ button {
   margin-top: 24px;
 }
 
-.icon-size100 {
-  font-size: 100px;
+.icon-size40 {
+  font-size: 40px;
 }
 
-.fs90 {
-  font-size: 90px;
+.fs60 {
+  font-size: 60px;
 }
 
 .aprovado {
@@ -17,5 +17,10 @@ button {
 
 .reprovado {
   color: red;
+  font-weight: bold;
+}
+
+.bold {
+  color: black;
   font-weight: bold;
 }
